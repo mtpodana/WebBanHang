@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Form_add";
+    Layout = "~/Views/Shared/_Layout_QL.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Thêm Sản Phẩm
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+                <li><a href="/">Quản lý sản phẩm</a></li>
+                <li class="active">Thêm Sản Phẩm</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+             <div class="row">
+                @*@if (TempData["add_success"] != null)
+                {
+                    <div class="alert alert-success text-center" id="AlertBox">
+                        @TempData["add_success"]
+                    </div>
+                }*@
+            </div> 
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <h4 class="col-sm-6" id="title">Tên SP:</h4>
+                        <input class="col-sm-5" type="text" name="TenSP" value="ID_PhieuNhap" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <h4 class="col-sm-6" id="title">Đơn Giá:</h4>
+                        <input class="col-sm-5" type="number" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <h4 class="col-sm-6" id="title">Loại SP:</h4>
+                        <input class="col-sm-5" type="text" name="TenSP" value="ID_PhieuNhap" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <h4 class="col-sm-6" id="title">Hình Ảnh:</h4>
+                        <input class="col-sm-5" type="file" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Thêm mới</button>
+                    <a href="/QL_SanPham/Index"><button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Đóng</button></a>
+                </div>
+            </div>
+         </section>
+     </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+﻿@model DoAnBanHang.Models.Cart
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@if (Model != null)
+{
+    <head>
+
+        <script src="~/Scripts/app.js"></script>
+    </head>
+    <div class="container">
+        <h1>GIỎ HÀNG</h1>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th colspan="2">Sản phẩm</th>
+                    <th>Size</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.items)
+                {
+                    double sum = (double)(item._chosen_product_quantity * item._chosen_product.DonGia);
+                    string[] str = Convert.ToString(sum).Split(' ');
+                    string total = "";
+                    int cham = 1;
+                    for (int i = str.Length - 1; i >= 0; i--)
+                    {
+                        if (cham % 3 == 0)
+                        {
+                            total = "." + total;
+                            cham = 1;
+                        }
+                        total = str[i] + total;
+                        cham++;
+                    }
+                    total += " đ";
+                    <tr class="cart-item">
+                        <td>
+                            <img class="detail-img" src="@Url.Content(item._chosen_product.Image)">
+                        </td>
+                        <td>
+                            <div>
+                                <span>@Html.DisplayFor(model => item._chosen_product.TenSP)</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @*<span>@Html.DisplayFor(model => item._chosen_size.Size)</span>*@
+                                @*<span>@Html.DisplayFor()</span>*@
+                            </div>
+                        </td>
+                        @{
+                            int unitPrice = (int)item._chosen_product.DonGia;
+                            string[] temp = Convert.ToString(unitPrice).Split(' ');
+                            string unitP = "";
+                            int dot = 1;
+                            for (int i = temp.Length - 1; i >= 0; i--)
+                            {
+                                if (dot % 3 == 0)
+                                {
+                                    unitP = "." + unitP;
+                                    dot = 1;
+                                }
+                                unitP = temp[i] + unitP;
+                                dot++;
+                            }
+                            unitP += " đ";
+                        }
+                        <td>
+                            <p> @unitP</p>
+                        </td>
+                        <td>
+                            @*<input class="change-quantity" id="minus" type="button" value="-">
+                                <input class="quantity" type="text" name="quantity" min="1" value="1">
+                                <input class="change-quantity" id="plus" type="button" value="+">*@
+                            @using (Html.BeginForm("UpdateQuantity", "Cart"))
+                            {
+                                <input type="hidden" value="@item._chosen_product.ID_SP" name="ID_SP" />
+                                <input class="quantity" type="number" value="@item._chosen_product_quantity" name="quantity" />
+                                <input type="submit" value="Update" />
+                            }
+                        </td>
+                        <td>@total</td>
+                        <td>
+                            <a href="/Cart/Remove/@item._chosen_product.ID_SP"><button class="btn-clear"><i class="fa-solid fa-trash-can"></i></button></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p class="total">THÀNH TIỀN: <span class="total-price">@Model.Total_Items()</span></p>
+        <button class="btn-purchase"><i class="fa-solid fa-cart-shopping"></i>THANH TOÁN</button>
+    </div>
+
+}

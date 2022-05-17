@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e828aa89d82f43b7905260282ea2c882" Name="Diagram1">
+        <EntityTypeShape EntityType="BanHangModel.CachThucThanhToan" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.CT_HoaDon" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.HoaDon" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.KichCo" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.Loai_SP" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.NhanVien" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.SanPham" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.SanPhamKhuyenMai" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.ThongTinTK" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanHangModel.Voucher" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="BanHangModel.FK_HoaDon_CachThucThanhToan" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_CT_HoaDon_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_CT_HoaDon_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_HoaDon_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_HoaDon_Voucher" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_KichCo_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_SanPham_Loai_SP" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_SanPhamKhuyenMai_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="BanHangModel.FK_ThongTinTK_TaiKhoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,67 @@
+﻿
+@model DoAnBanHang.Models.SanPham
+@using System;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="https://kit.fontawesome.com/200d9ab894.js" crossorigin="anonymous"></script>
+
+</head>
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="main-img">
+                <img class="detail-img" src="@Url.Content(Model.Image)">
+
+            </div>
+        </div>
+        <div class="col-md-6 detail-information">
+            @*Tên sản phẩm*@
+
+            <p class="detail-name">
+                @Html.DisplayFor(model => model.TenSP)
+                @*@item.SanPham.TenSP*@
+            </p>
+            <hr />
+            @*Gía tiền sản phẩm*@
+            <p class="detail-price">
+                @Html.DisplayFor(model => model.DonGia)
+                @*@item.SanPham.DonGia*@
+            </p>
+            <hr />
+            @*Kích cỡ của sản phẩm*@
+
+            <ul class="table-size">
+                @foreach (var item in ViewBag.query)
+                {
+
+                    <li class="size"><input formmethod="post" type="radio" name="size" class="size-choose" value="@item.Size"><label class="size-des">Size  @item.Size</label></li>
+                }
+            </ul>
+
+
+            <hr />
+            @*Button thêm và thanh toán*@
+            <ul class="table-btn">
+                <li><a href="/Cart/AddToCart/@Model.ID_SP"> <button class="btn-add" type="submit">THÊM VÀO GIỎ</button></a></li>
+                <li><a class="btn-buy" href="#">MUA NGAY</a></li>
+            </ul>
+            <hr />
+            @*Chi tiết của sản phẩm*@
+            <p class="detail-title">Chi tiết sản phẩm</p>
+            <div>
+                <ul class="detail-des">
+                    <li><i class="fas fa-circle"></i>Chất liệu: 100% Cotton</li>
+                    <li><i class="fas fa-circle"></i>Regular fit</li>
+                    <li><i class="fas fa-circle"></i>Vải 2 chiều</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
