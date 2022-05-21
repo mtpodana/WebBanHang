@@ -14,11 +14,19 @@ namespace DoAnBanHang.Models
     
     public partial class KichCo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KichCo()
+        {
+            this.CT_HoaDon = new HashSet<CT_HoaDon>();
+        }
+    
         public int ID_Size { get; set; }
         public string Size { get; set; }
         public int ID_SP { get; set; }
         public int SoLuong { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CT_HoaDon> CT_HoaDon { get; set; }
         public virtual SanPham SanPham { get; set; }
     }
 }

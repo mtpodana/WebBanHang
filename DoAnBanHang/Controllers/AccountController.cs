@@ -46,7 +46,7 @@ namespace DoAnBanHang.Controllers
                 else
                 {
                     //Session["IDUser"] = User.ID_KhachHang;
-                    Session["Username"] = User.Username;
+                    //Session["Username"] = User.Username;
                     return RedirectToAction("TrangChu", "TrangChu");
                    
                 }

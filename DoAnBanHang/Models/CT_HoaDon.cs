@@ -14,11 +14,11 @@ namespace DoAnBanHang.Models
     
     public partial class CT_HoaDon
     {
-        public int ID_SP { get; set; }
+        public int ID_Size { get; set; }
         public int ID_HoaDon { get; set; }
         public int SoLuong { get; set; }
     
         public virtual HoaDon HoaDon { get; set; }
-        public virtual SanPham SanPham { get; set; }
+        public virtual KichCo KichCo { get; set; }
     }
 }

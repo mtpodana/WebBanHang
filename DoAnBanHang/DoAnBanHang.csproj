@@ -1079,6 +1079,7 @@
     <Content Include="Image\4.jpg" />
     <Content Include="Image\5.jpg" />
     <Content Include="Image\737385.jpg" />
+    <Content Include="Image\Giohang.gif" />
     <Content Include="Models\BanHangModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BanHangModel.edmx</DependentUpon>
@@ -1159,7 +1160,7 @@
     </Content>
     <Content Include="Views\Detail\Index.cshtml" />
     <Content Include="Views\Product\Ao.cshtml" />
-    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\HienThiGioHang.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Product\Quan.cshtml" />
     <Content Include="Views\Product\Giay.cshtml" />
@@ -1190,6 +1191,7 @@
     <Content Include="Views\Account\DangKy.cshtml" />
     <Content Include="Views\Account\ThongTinKhach.cshtml" />
     <Content Include="Views\QL_SanPham\Details.cshtml" />
+    <Content Include="Views\Cart\GioHangPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

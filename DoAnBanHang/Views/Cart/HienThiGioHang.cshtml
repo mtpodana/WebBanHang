@@ -1,0 +1,74 @@
+﻿@using DoAnBanHang.Models
+@model List<Cart>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+    <head>
+
+        <script src="~/Scripts/app.js"></script>
+    </head>
+    <div class="container">
+        <h1>GIỎ HÀNG</h1>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th colspan="2">Sản phẩm</th>
+                    <th>Size</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+               @foreach (var item in Model)
+               {
+                <tr class="cart-item">
+                    <td>
+                        <img class="detail-img" src="@Url.Content(item.Image)">
+                    </td>
+                    <td>
+                        <div>
+                            <span>@item.TenSP</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            @*<span>@Html.DisplayFor(model => item._chosen_size.Size)</span>*@
+                            @*<span>@Html.DisplayFor()</span>*@
+                            <p>@item.kichco.Size</p>
+                            @*<p>@ViewBag.kichco</p>*@
+                        </div>
+                    </td>
+                    <td>
+                        <p> @item.DonGia</p>
+                    </td>
+                    <td>
+                        @*<input class="change-quantity" id="minus" type="button" value="-">
+                <input class="quantity" type="text" name="quantity" min="1" value="1">
+                <input class="change-quantity" id="plus" type="button" value="+">
+            @using (Html.BeginForm("UpdateQuantity", "Cart"))
+            {
+                <input type="hidden" value="@item._chosen_product.ID_SP" name="ID_SP" />
+                <input class="quantity" type="number" value="@item._chosen_product_quantity" name="quantity" />
+                <input type="submit" value="Update" />
+            }*@
+                        @item.SoLuong
+                    </td>
+                    <td>@item.ThanhTien()</td>
+                    @*<td>
+            <a href="/Cart/Remove/@item._chosen_product.ID_SP"><button class="btn-clear"><i class="fa-solid fa-trash-can"></i></button></a>
+        </td>*@
+                    <td>@Html.ActionLink("Xóa hàng", "XoaMatHang", "Cart", new { MaSP = item.ID_SP }, new { @class = "btn btn-danger" })</td>
+                </tr>
+               }
+            </tbody>
+        </table>
+        <p class="total">THÀNH TIỀN: <span class="total-price">@ViewBag.TongTien</span></p>
+        <button class="btn-purchase"><i class="fa-solid fa-cart-shopping"></i>THANH TOÁN</button>
+    </div>
+
+

@@ -1,8 +1,8 @@
-﻿@model IEnumerable<DoAnBanHang.Models.ThongTinTK>
-@{ 
+﻿
+@*@{ 
     var tk = Session["Khach"] as DoAnBanHang.Models.TaiKhoan;
     
-}
+}*@
 
 <!DOCTYPE html>
 <html>
@@ -37,10 +37,10 @@
     <title>@ViewBag.Title</title>
 </head>
 
-@if (tk == null)
+@*@if (tk == null)
 {
     Response.Redirect("~/Account/Index");
-}
+}*@
 <body>
 
     <header>
@@ -52,7 +52,7 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>*@
-                @using (Html.BeginForm("Search", "TrangChu", FormMethod.Get, new { @class = " form-inline" }))
+                @*@using (Html.BeginForm("Search", "TrangChu", FormMethod.Get, new { @class = " form-inline" }))
                 {
                     <div class="form-search" style="margin-right: 30px;">
                         <input class="search-bar" type="search" placeholder="Tìm kiếm" name="search" />
@@ -73,53 +73,11 @@
                             </div>
                         </i>
                     </a>
-                </section>
-                <label>@tk.</label>
-
-                <script Langues></script>
-
-                @*ThongTinKhachHang*@
-
-                @*<nav class="navbar navbar-static-top" role="navigation">
-                        <!-- Sidebar toggle button-->
-                        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                            <span class="sr-only">Toggle navigation</span>
-                        </a>
-                        <div class="navbar-custom-menu">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown user user-menu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="~/Content/Assets/dist/img/default-avatar.png" class="user-image" alt="User Image" />
-                                        <span class="hidden-xs">Tên khách hàng</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <!-- User image -->
-                                        <li class="user-header">
-                                            <img src="~/Content/Assets/dist/img/default-avatar.png" class="img-circle" alt="User Image" />
-                                            <p>
-                                                Tên khách hàng
-                                            </p>
-                                        </li>
-
-                                        <li class="user-footer">
-                                            <div class="pull-left">
-                                                <a href="~/Account/DoiMatKhau" class="btn btn-default btn-flat">Đổi mật khẩu</a>
-                                            </div>
-                                            <div class="pull-right">
-                                                <a href="@Url.Action("DangNhap","Account")" class="btn btn-default btn-flat">Thoát tài khoản</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- Control Sidebar Toggle Button -->
-                                @*<li>
-                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                                </li
-                            </ul>
-                        </div>
-                    </nav>*@
-
-                <a href="~/Cart/Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </section>*@
+                @*<label>@tk.</label>*@
+                <div class="ml-auto">
+                    @Html.Action("GioHangPartial", "Cart")
+                </div>
             </div>
         </div>
         <div class="header-container">

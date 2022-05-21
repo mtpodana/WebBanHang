@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CachThucThanhToan">
           <Key>
             <PropertyRef Name="ID_ThanhToan" />
@@ -14,10 +14,10 @@
         </EntityType>
         <EntityType Name="CT_HoaDon">
           <Key>
-            <PropertyRef Name="ID_SP" />
+            <PropertyRef Name="ID_Size" />
             <PropertyRef Name="ID_HoaDon" />
           </Key>
-          <Property Name="ID_SP" Type="int" Nullable="false" />
+          <Property Name="ID_Size" Type="int" Nullable="false" />
           <Property Name="ID_HoaDon" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
         </EntityType>
@@ -112,7 +112,7 @@
           </Key>
           <Property Name="ID_KM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenKhuyenMai" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="GiaTri" Type="int" Nullable="false" />
+          <Property Name="GiaTri" Type="float" Nullable="false" />
         </EntityType>
         <Association Name="FK_CT_HoaDon_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -126,15 +126,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CT_HoaDon_SanPham">
-          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+        <Association Name="FK_CT_HoaDon_KichCo">
+          <End Role="KichCo" Type="Self.KichCo" Multiplicity="1" />
           <End Role="CT_HoaDon" Type="Self.CT_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SanPham">
-              <PropertyRef Name="ID_SP" />
+            <Principal Role="KichCo">
+              <PropertyRef Name="ID_Size" />
             </Principal>
             <Dependent Role="CT_HoaDon">
-              <PropertyRef Name="ID_SP" />
+              <PropertyRef Name="ID_Size" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,8 +239,8 @@
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="CT_HoaDon" EntitySet="CT_HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK_CT_HoaDon_SanPham" Association="Self.FK_CT_HoaDon_SanPham">
-            <End Role="SanPham" EntitySet="SanPham" />
+          <AssociationSet Name="FK_CT_HoaDon_KichCo" Association="Self.FK_CT_HoaDon_KichCo">
+            <End Role="KichCo" EntitySet="KichCo" />
             <End Role="CT_HoaDon" EntitySet="CT_HoaDon" />
           </AssociationSet>
           <AssociationSet Name="FK_HoaDon_CachThucThanhToan" Association="Self.FK_HoaDon_CachThucThanhToan">
@@ -272,7 +272,8 @@
             <End Role="ThongTinTK" EntitySet="ThongTinTK" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -286,14 +287,14 @@
         </EntityType>
         <EntityType Name="CT_HoaDon">
           <Key>
-            <PropertyRef Name="ID_SP" />
+            <PropertyRef Name="ID_Size" />
             <PropertyRef Name="ID_HoaDon" />
           </Key>
-          <Property Name="ID_SP" Type="Int32" Nullable="false" />
+          <Property Name="ID_Size" Type="Int32" Nullable="false" />
           <Property Name="ID_HoaDon" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_CT_HoaDon_HoaDon" FromRole="CT_HoaDon" ToRole="HoaDon" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK_CT_HoaDon_SanPham" FromRole="CT_HoaDon" ToRole="SanPham" />
+          <NavigationProperty Name="KichCo" Relationship="Self.FK_CT_HoaDon_KichCo" FromRole="CT_HoaDon" ToRole="KichCo" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -318,6 +319,7 @@
           <Property Name="Size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="ID_SP" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CT_HoaDon" Relationship="Self.FK_CT_HoaDon_KichCo" FromRole="KichCo" ToRole="CT_HoaDon" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK_KichCo_SanPham" FromRole="KichCo" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="Loai_SP">
@@ -348,7 +350,6 @@
           <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
           <Property Name="NgayNhapHang" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CT_HoaDon" Relationship="Self.FK_CT_HoaDon_SanPham" FromRole="SanPham" ToRole="CT_HoaDon" />
           <NavigationProperty Name="KichCo" Relationship="Self.FK_KichCo_SanPham" FromRole="SanPham" ToRole="KichCo" />
           <NavigationProperty Name="Loai_SP" Relationship="Self.FK_SanPham_Loai_SP" FromRole="SanPham" ToRole="Loai_SP" />
           <NavigationProperty Name="SanPhamKhuyenMai" Relationship="Self.FK_SanPhamKhuyenMai_SanPham" FromRole="SanPham" ToRole="SanPhamKhuyenMai" />
@@ -400,7 +401,7 @@
           </Key>
           <Property Name="ID_KM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenKhuyenMai" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GiaTri" Type="Int32" Nullable="false" />
+          <Property Name="GiaTri" Type="Double" Nullable="false" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_HoaDon_Voucher" FromRole="Voucher" ToRole="HoaDon" />
         </EntityType>
         <Association Name="FK_HoaDon_CachThucThanhToan">
@@ -427,15 +428,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CT_HoaDon_SanPham">
-          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+        <Association Name="FK_CT_HoaDon_KichCo">
+          <End Role="KichCo" Type="Self.KichCo" Multiplicity="1" />
           <End Role="CT_HoaDon" Type="Self.CT_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SanPham">
-              <PropertyRef Name="ID_SP" />
+            <Principal Role="KichCo">
+              <PropertyRef Name="ID_Size" />
             </Principal>
             <Dependent Role="CT_HoaDon">
-              <PropertyRef Name="ID_SP" />
+              <PropertyRef Name="ID_Size" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -532,8 +533,8 @@
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="CT_HoaDon" EntitySet="CT_HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK_CT_HoaDon_SanPham" Association="Self.FK_CT_HoaDon_SanPham">
-            <End Role="SanPham" EntitySet="SanPham" />
+          <AssociationSet Name="FK_CT_HoaDon_KichCo" Association="Self.FK_CT_HoaDon_KichCo">
+            <End Role="KichCo" EntitySet="KichCo" />
             <End Role="CT_HoaDon" EntitySet="CT_HoaDon" />
           </AssociationSet>
           <AssociationSet Name="FK_HoaDon_TaiKhoan" Association="Self.FK_HoaDon_TaiKhoan">
@@ -578,7 +579,7 @@
           <EntitySetMapping Name="CT_HoaDon">
             <EntityTypeMapping TypeName="BanHangModel.CT_HoaDon">
               <MappingFragment StoreEntitySet="CT_HoaDon">
-                <ScalarProperty Name="ID_SP" ColumnName="ID_SP" />
+                <ScalarProperty Name="ID_Size" ColumnName="ID_Size" />
                 <ScalarProperty Name="ID_HoaDon" ColumnName="ID_HoaDon" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
               </MappingFragment>

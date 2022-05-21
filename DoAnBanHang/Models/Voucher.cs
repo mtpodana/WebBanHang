@@ -22,7 +22,7 @@ namespace DoAnBanHang.Models
     
         public int ID_KM { get; set; }
         public string TenKhuyenMai { get; set; }
-        public int GiaTri { get; set; }
+        public double GiaTri { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDon { get; set; }
